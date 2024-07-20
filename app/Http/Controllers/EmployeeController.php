@@ -14,14 +14,21 @@ class EmployeeController extends Controller
         return view('',compact($employees));
     }
 
+
     public function create(){
-        $employee = new Employer();
-        $employee->save();
-
-
+        return view('');
     }
 
-    public function store(){
+
+    public function store(EmployeeRequest $req){
+        $employee = new Employer();
+        $employee->prenom = $req->prenom;
+        $employee->nom = $req->nom;
+        $employee->email = $req->email;
+        $employee->contact = $req->contact;
+        $employee->departement_id = $req->id;
+        $employee->save();
+        return view('',compact($employee))->with('success_msg',"Employee added successfully");
 
     }
 
@@ -33,13 +40,18 @@ class EmployeeController extends Controller
 
     public function update(EmployeeRequest $req, $id){
         $employee=Employer::find($id);
+        $employee->prenom = $req->prenom;
+        $employee->nom = $req->nom;
+        $employee->email = $req->email;
+        $employee->contact = $req->contact;
+        $employee->departement_id = $req->id;
         $employee->save();
-        return view('',compact($employee));
+        return redirect('',compact($employee))->with('success_msg',"Employee updated successfully");
     }
 
     public function delete($id){
         $employee=Employer::find($id);
-        $employee->delete();
+        $employee->delete()->with('success_msg',"Employee deleted successfully");
 
     }
 }
