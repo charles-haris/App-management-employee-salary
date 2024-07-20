@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login',[AuthentificationController::class,'login'])->name('login');
 Route::post('/login',[AuthentificationController::class,'handleLogin'])->name('handlelogin');
+Route::get('/',[AppController::class,'index'])->name('dashboard');
+
 
 // Secured routes
 Route::middleware('auth')->group(function(){
