@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+    //list
     public function list(){
         $employees = Employer::all();
 
