@@ -17,6 +17,8 @@ class Employer extends Model
     //what is the use of this method
         //what is the use of this method
     //what is the use of this method
+    //what is the use of this method
+    //what is the use of this method
 
 
 
